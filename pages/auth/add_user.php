@@ -1,6 +1,12 @@
 <?php
 
 include_once("../../config/database.php");
+session_start();
+
+if(!isset($_SESSION['user']) || $_SESSION['role'] !== 'admin'){
+    header("Location: staff.php");
+    echo "<div class='alert alert-danger'> You don't have the rights to access this page</div>";
+}
 
 //when the form is submitted,then the submit button will be set which will tirgger the following functionalities.
 if(isset($_POST['submit'])){
