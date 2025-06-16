@@ -3,6 +3,11 @@ session_start();
 
 // Determine if user is logged in (set during successful login)
 $isLoggedIn = isset($_SESSION['user']) && $_SESSION['user'] === 'yes';
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: ../staff/index.php");
+    exit();
+} 
 ?>
 
 <?php include_once("../../includes/header.php") ?>
@@ -18,9 +23,9 @@ $isLoggedIn = isset($_SESSION['user']) && $_SESSION['user'] === 'yes';
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <?php if ($isLoggedIn): ?>
-                    <a href="./pages/auth/logout.php" class="btn btn-outline-light ms-lg-3">Logout</a>
+                    <a href="logout.php" class="btn btn-outline-light ms-lg-3">Logout</a>
                 <?php else: ?>
-                    <a href="./pages/auth/login.php" class="btn btn-outline-light ms-lg-3">Login</a>
+                    <a href="login.php" class="btn btn-outline-light ms-lg-3">Login</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -37,7 +42,7 @@ $isLoggedIn = isset($_SESSION['user']) && $_SESSION['user'] === 'yes';
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Add Product</h5>
                         <p class="card-text flex-grow-1">Quickly register new items into your inventory.</p>
-                        <a href="pages/products/add_product.php" class="btn btn-primary mt-auto">Add Product</a>
+                        <a href="../products/add_product.php" class="btn btn-primary mt-auto">Add Product</a>
                     </div>
                 </div>
             </div>
