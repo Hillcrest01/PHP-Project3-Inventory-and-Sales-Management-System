@@ -2,6 +2,7 @@
 //get the database connection
 include_once("../../config/database.php");
 
+//perform the query to select all the items from the database
 $sql = "SELECT * FROM products";
 
 $result = mysqli_query($conn, $sql);
