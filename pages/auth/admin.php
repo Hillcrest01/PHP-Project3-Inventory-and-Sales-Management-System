@@ -4,6 +4,7 @@ session_start();
 // Determine if user is logged in (set during successful login)
 $isLoggedIn = isset($_SESSION['user']) && $_SESSION['user'] === 'yes';
 
+//check if the user is not an admin and redirect to index page
 if ($_SESSION['role'] !== 'admin') {
     header("Location: ../staff/index.php");
     exit();
